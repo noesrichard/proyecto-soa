@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/syles.css}">
+    <title>Editar Articulo</title>
+</head>
+<body>
+    <header th:replace="plantilla :: header"></header>
+    <nav th:replace="plantilla :: navbar"></nav>
+    <div class="container">
+        <form th:action="@{/articulo/${artPlanta.getCodArtPlanta()}}" th:object="${artPlanta}" method="POST">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" class="form-control" placeholder="Nombre" th:value="${artPlanta.getArticulo()}" th:field="*{articulo.nomArticulo}">
+            </div>
+            <div class="form-group">
+                <label for="saldo">Color</label>
+                <input type="text" id="saldo" class="form-control" placeholder="Color" th:value="${artPlanta.getPlanta()}" th:field="*{planta.codPlanta}">
+            </div>
+            <div class="form-group">
+                <label for="limite">Peso</label>
+                <input type="text" id="limite" class="form-control" placeholder="Peso" th:value="${artPlanta.getExistencias()}" th:field="*{existencias}">
+            </div>
+            <div class="form-group">
+                <label for="descuento">Capaciad</label>
+                <input type="text" id="descuento" class="form-control" placeholder="Capaciad" th:value="${artPlanta.getNivelRiesgo()}" th:field="*{nivelRiesgo}">
+            </div>
+            <input class="btn btn-warning" type="submit" value="Editar">
+        </form>
+    </div>
+    <div th:replace="plantilla :: footer"></div>
+</body>
+</html>

@@ -14,8 +14,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class Pedido implements Serializable {
     @Id
-    @Column(name = "codpedido", length = 10)
-    private String codPedido;
+    @Column(name = "codpedido")
+    private Long codPedido;
 
     @Column(name = "fechapedido")
     private String fechaPedido;

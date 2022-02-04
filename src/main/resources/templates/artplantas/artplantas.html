@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/syles.css}">
+    <title>Articulos</title>
+</head>
+<body>
+    <header th:replace="plantilla :: header"></header>
+    <nav th:replace="plantilla :: navbar"></nav>
+    <div class="container">
+        <span class="fs-5">Crear Existencia con Articulo Nuevo</span>
+        <form th:action="@{/artplanta}" th:object="${artPlanta}" method="POST">
+            <div class="row">
+                <div class="col">
+                    <input type="text" id="cedula" class="form-control" placeholder="Codigo" th:field="*{articulo.codArticulo}">
+                </div>
+                <div class="col">
+                    <input type="text" id="nombre" class="form-control" placeholder="Nombre" th:field="*{articulo.nomArticulo}">
+                </div>
+                <div class="col">
+                    <input type="text" id="saldo" class="form-control" placeholder="Color"  th:field="*{articulo.color}">
+                </div>
+                <div class="col">
+                    <input type="text" id="limite" class="form-control" placeholder="Peso" th:field="*{articulo.peso}">
+                </div>
+                <div class="col">
+                    <input type="text" id="descuento" class="form-control" placeholder="Capcidad" th:field="*{articulo.capacidad}">
+                </div>
+                <div class="col">
+                    <input type="text" id="existencias" class="form-control" placeholder="Existencias" th:field="*{existencias}">
+                </div>
+                <div class="col">
+                    <input type="text" id="nivelriesgo" class="form-control" placeholder="Nivel Riesgo" th:field="*{nivelRiesgo}">
+                </div>
+                <div class="col">
+                    <input type="text" id="planta" class="form-control" placeholder="Planta" th:field="*{planta.codPlanta}">
+                </div>
+                <div class="col">
+                    <input type="submit" value="Crear" class="btn btn-primary mb-3">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <span class="fs-5">Crear Existencia</span>
+        <form th:action="@{/artplanta/existente}" th:object="${artPlanta}" method="POST">
+            <div class="row">
+                <div class="col">
+                    <input type="text" id="articulo" class="form-control" placeholder="Codigo" th:field="*{articulo.codArticulo}">
+                </div>
+                <div class="col">
+                    <input type="text" id="existencias_solo" class="form-control" th:field="*{existencias}" placeholder="Existencias" >
+                </div>
+                <div class="col">
+                    <input type="text" id="nivelriesgo_solo" class="form-control" th:field="*{nivelRiesgo}" placeholder="Nivel Riesgo" >
+                </div>
+                <div class="col">
+                    <input type="text" id="planta_solo" class="form-control" placeholder="Planta" th:field="*{planta.codPlanta}">
+                </div>
+                <div class="col">
+                    <input type="submit" value="Crear" class="btn btn-primary mb-3">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <table class="table table-bordered" id="tabla-estudiantes">
+            <thead class="table-dark text-center">
+            <tr>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Color</th>
+                <th>Peso</th>
+                <th>Capacidad</th>
+                <th>Planta</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody class="text-center">
+            <tr th:each="artPlanta : ${artPlantas}">
+                <td th:text="${artPlanta.getArticulo().getCodArticulo()}"></td>
+                <td th:text="${artPlanta.getArticulo().getNomArticulo()}"></td>
+                <td th:text="${artPlanta.getArticulo().getColor()}"></td>
+                <td th:text="${artPlanta.getArticulo().getPeso()}"></td>
+                <td th:text="${artPlanta.getArticulo().getCapacidad()}"></td>
+                <td th:text="${artPlanta.getPlanta().getCodPlanta()}"></td>
+                <td>
+                    <a th:href="@{'/artplanta/'+${artPlanta.getCodArtPlanta()}}" class="btn btn-warning">Editar</a>
+                    <a th:href="@{'/artplanta/eliminar/'+${artPlanta.getCodArtPlanta()}}" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:replace="plantilla :: footer"></div>
+
+</body>
+</html>

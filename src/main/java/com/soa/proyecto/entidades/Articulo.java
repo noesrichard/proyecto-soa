@@ -27,9 +27,9 @@ public class Articulo implements Serializable {
     private String color;
 
     @Column(name = "peso")
-    private double peso;
+    private Double peso;
 
     @Column(name = "capacidad")
-    private double capacidad;
+    private Double capacidad;
 
 }

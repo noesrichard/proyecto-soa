@@ -35,7 +35,7 @@ public class PedidoController {
 
 
     @GetMapping("/pedido/{codPedido}")
-    public String getEditPedidoPage(@PathVariable(name = "codPedido") String codPedido, Model model){
+    public String getEditPedidoPage(@PathVariable(name = "codPedido") Long codPedido, Model model){
         Pedido pedido = new Pedido();
         pedido.setCodPedido(codPedido);
         Pedido pedidoEncontrado = pedidoServicios.get(pedido);
@@ -51,7 +51,7 @@ public class PedidoController {
     }
 
     @GetMapping("/pedido/eliminar/{codPedido}")
-    public String deleteucursal(@PathVariable(name = "codPedido") String codPedido){
+    public String deleteucursal(@PathVariable(name = "codPedido") Long codPedido){
         System.out.println(codPedido);
         Pedido c = new Pedido();
         c.setCodPedido(codPedido);

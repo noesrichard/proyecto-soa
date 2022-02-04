@@ -24,12 +24,12 @@ public class Cliente implements Serializable {
     private String nomCliente;
 
     @Column(name = "saldo")
-    private double saldo;
+    private Double saldo;
 
     @Column(name = "limitecredito")
-    private double limiteCredito;
+    private Double limiteCredito;
 
     @Column(name = "pctdescuento")
-    private int pctDescuento;
+    private Integer pctDescuento;
 
 }
