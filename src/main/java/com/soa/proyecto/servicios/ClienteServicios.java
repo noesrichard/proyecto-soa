@@ -42,6 +42,7 @@ public class ClienteServicios implements Servicio<Cliente> {
 
     @Override
     public Cliente eliminar(Cliente entidad) {
-        return null;
+        clienteDAO.deleteByCodCliente(entidad.getCodCliente());
+        return entidad;
     }
 }

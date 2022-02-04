@@ -55,7 +55,7 @@
                 <td th:text="${cliente.getPctDescuento()}"></td>
                 <td>
                     <a th:href="@{'/cliente/'+${cliente.getCodCliente()}}" class="btn btn-warning">Editar</a>
-                    <button class="btn btn-danger">Eliminar</button>
+                    <a th:href="@{'/cliente/eliminar/'+${cliente.getCodCliente()}}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
             </tbody>

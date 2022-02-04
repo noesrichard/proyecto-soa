@@ -8,4 +8,5 @@ import org.springframework.data.jpa.repository.Query;
 public interface ClienteDAO extends JpaRepository<Cliente, String> {
     Cliente findByCodCliente(String codCliente);
 
+    void deleteByCodCliente(String codCliente);
 }

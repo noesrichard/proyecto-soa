@@ -45,4 +45,13 @@ public class ClienteController {
         clienteServicios.edit(cliente);
         return "redirect:/cliente";
     }
+
+    @GetMapping("/cliente/eliminar/{codCliente}")
+    public String deleteCliente(@PathVariable(name = "codCliente") String codCliente){
+        System.out.println(codCliente);
+        Cliente c = new Cliente();
+        c.setCodCliente(codCliente);
+        clienteServicios.eliminar(c);
+        return "redirect:/cliente";
+    }
 }

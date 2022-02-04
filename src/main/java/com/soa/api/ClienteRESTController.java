@@ -1,4 +1,4 @@
-package com.soa.proyecto.controllers;
+package com.soa.api;
 
 import com.soa.proyecto.entidades.Cliente;
 import com.soa.proyecto.servicios.ClienteServicios;
