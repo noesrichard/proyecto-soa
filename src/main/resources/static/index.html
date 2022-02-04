@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <title>SOA Spring Boot</title>
+</head>
+
+<body>
+    <h1 class="text-center">Servicios con Spring Boot</h1>
+
+    <div class="container">
+
+        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Nuevo</button>
+        <input type="text" name="search-bar" id="search-bar" class="form-label">
+        <button class="btn btn-primary" onclick="buscarEstudiante()">Buscar</button>
+
+        <table class="table table-bordered" id="tabla-estudiantes">
+            <thead class="table-dark text-center">
+                <tr>
+                    <th>Cédula</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Direccion</th>
+                    <th>Telefono</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                <tr>
+                    <td>1801</td>
+                    <td>Alex</td>
+                    <td>Tigselema</td>
+                    <td>Ambato</td>
+                    <td>0988784</td>
+                    <td>
+                        <button class="btn btn-warning">Editar</button>
+                        <button class="btn btn-danger">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p class="text-center alert alert-danger" id="mensaje"></p>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Nuevo estudiante</h5>
+
+                </div>
+                <div class="modal-body">
+                    <form>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="cedula">Cédula:</label>
+                            <input type="text" id="cedula" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="apellido">Apellido:</label>
+                            <input type="text" id="apellido" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="direccion">Dirección:</label>
+                            <input type="text" id="direccion" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="telefono">Teléfono:</label>
+                            <input type="text" id="telefono" class="form-control">
+                        </div>
+
+                    </form>
+                    <p class="text-center alert alert-danger" id="mensaje-formulario"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-cerrar" onclick="limpiarCampos()">Cerrar</button>
+                    <button id="btn-aceptar" type="button" class="btn btn-primary" onclick="setEstudiante()">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal-delete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Eliminar Estudiante</h5>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-cerrar" onclick="">Cerrar</button>
+                    <button id="btn-aceptar" type="button" class="btn btn-primary" onclick="">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/estudiante.js"></script>
+</body>
+
+</html>

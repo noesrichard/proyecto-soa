@@ -3,16 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Title</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <title>Clientes</title>
 </head>
 <body>
-    <table>
-        <th:block th:each="cliente: ${clientes}">
-           <tr>
-               <td th:text="${cliente.getCodCliente()}"></td>
-               <td th:text="${cliente.getNomCliente()}"></td>
-           </tr>
-        </th:block>
-    </table>
+    <div class="container">
+        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Nuevo</button>
+        <table class="table table-bordered" id="tabla-estudiantes">
+            <thead class="table-dark text-center">
+            <tr>
+                <th>Cédula</th>
+                <th>Nombre</th>
+                <th>Saldo</th>
+                <th>Limite Credito</th>
+                <th>Descuento%</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody class="text-center">
+            <tr th:each="cliente : ${clientes}">
+                <td th:text="${cliente.getCodCliente()}"></td>
+                <td th:text="${cliente.getNomCliente()}"></td>
+                <td th:text="${cliente.getSaldo()}"></td>
+                <td th:text="${cliente.getLimiteCredito()}"></td>
+                <td th:text="${cliente.getPctDescuento()}"></td>
+                <td>
+                    <button class="btn btn-warning">Editar</button>
+                    <button class="btn btn-danger">Eliminar</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
 </body>
 </html>
