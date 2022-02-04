@@ -3,15 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-          crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/syles.css}">
     <title>Clientes</title>
 </head>
 <body>
+    <header th:replace="plantilla :: header"></header>
+    <nav th:replace="plantilla :: navbar"></nav>
     <div class="container">
-        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Nuevo</button>
+        <form th:action="@{/cliente}" th:object="${cliente}" method="POST">
+            <div class="row">
+                <div class="col">
+                    <input type="text" id="cedula" class="form-control" placeholder="Cedula" th:field="*{codCliente}">
+                </div>
+                <div class="col">
+                    <input type="text" id="nombre" class="form-control" placeholder="Nombre" th:field="*{nomCliente}">
+                </div>
+                <div class="col">
+                    <input type="text" id="saldo" class="form-control" placeholder="Saldo"  th:field="*{saldo}">
+                </div>
+                <div class="col">
+                    <input type="text" id="limite" class="form-control" placeholder="Limite Credito" th:field="*{limiteCredito}">
+                </div>
+                <div class="col">
+                    <input type="text" id="descuento" class="form-control" placeholder="Descuento %" th:field="*{pctDescuento}">
+                </div>
+                <div class="col">
+                    <input type="submit" value="Crear" class="btn btn-primary mb-3">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container">
         <table class="table table-bordered" id="tabla-estudiantes">
             <thead class="table-dark text-center">
             <tr>
@@ -37,9 +60,14 @@
             </tr>
             </tbody>
         </table>
-
-
     </div>
+    <script>
+        const editar = () => {
+
+        }
+    </script>
+
+    <div th:replace="plantilla :: footer"></div>
 
 </body>
 </html>

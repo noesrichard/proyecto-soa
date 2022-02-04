@@ -27,7 +27,7 @@ public class ClienteServicios implements Servicio<Cliente> {
 
     @Override
     public Cliente crear(Cliente entidad) {
-        return null;
+        return clienteDAO.save(entidad);
     }
 
     @Override
