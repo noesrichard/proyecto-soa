@@ -1,0 +1,62 @@
+package com.soa.proyecto.controllers;
+
+import com.soa.proyecto.entidades.Sucursal;
+import com.soa.proyecto.entidades.Sucursal;
+import com.soa.proyecto.servicios.SucursalServicios;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
+
+@Controller
+public class SucursalController {
+
+    @Autowired
+    private SucursalServicios sucursalServicios;
+
+    @GetMapping("/sucursal")
+    public String getAll(Model model){
+        Sucursal s = new Sucursal();
+        List<Sucursal> sucursales = sucursalServicios.get();
+        model.addAttribute("sucursales", sucursales);
+        model.addAttribute("sucursal", s);
+        return "sucursales/sucursal";
+    }
+
+    @PostMapping("/sucursal")
+    public String save(@ModelAttribute("sucursal") Sucursal sucursal){
+        sucursalServicios.crear(sucursal);
+        return "redirect:/sucursal";
+    }
+
+
+    @GetMapping("/sucursal/{codSucursal}")
+    public String getEditSucursalPage(@PathVariable(name = "codSucursal") String codSucursal, Model model){
+        Sucursal sucursal = new Sucursal();
+        sucursal.setCodSucursal(codSucursal);
+        Sucursal sucursalEncontrado = sucursalServicios.get(sucursal);
+        model.addAttribute("sucursal", sucursalEncontrado);
+        return "sucursales/edit-sucursal";
+    }
+
+    @PostMapping("/sucursal/{codSucursal}")
+    public String editSucursal(@ModelAttribute("sucursal") Sucursal sucursal){
+        System.out.println(sucursal);
+        sucursalServicios.edit(sucursal);
+        return "redirect:/sucursal";
+    }
+
+    @GetMapping("/sucursal/eliminar/{codSucursal}")
+    public String deleteucursal(@PathVariable(name = "codSucursal") String codSucursal){
+        System.out.println(codSucursal);
+        Sucursal c = new Sucursal();
+        c.setCodSucursal(codSucursal);
+        sucursalServicios.eliminar(c);
+        return "redirect:/sucursal";
+    }
+}

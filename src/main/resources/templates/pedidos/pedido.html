@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/syles.css}">
+    <title>Clientes</title>
+</head>
+<body>
+    <header th:replace="plantilla :: header"></header>
+    <nav th:replace="plantilla :: navbar"></nav>
+    <div class="container">
+        <table class="table table-bordered" id="tabla-estudiantes">
+            <thead class="table-dark text-center">
+            <tr>
+                <th>Codigo</th>
+                <th>Fecha</th>
+                <th>Cliente</th>
+                <th>Sucursal</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody class="text-center">
+            <tr th:each="pedido : ${pedidos}">
+                <td th:text="${pedido.getCodPedido()}"></td>
+                <td th:text="${pedido.getFechaPedido()}"></td>
+                <td th:text="${pedido.getSucursal().getCliente().getNomCliente()}"></td>
+                <td th:text="${pedido.getSucursal().getCodSucursal()}"></td>
+                <td th:text="${pedido.getSucursal().getDireccion()}"></td>
+                <td th:text="${pedido.getSucursal().getTelefono()}"></td>
+                <td>
+                    <a th:href="@{'/pedido/'+${pedido.getCodPedido()}}" class="btn btn-warning">Ver</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:replace="plantilla :: footer"></div>
+
+</body>
+</html>

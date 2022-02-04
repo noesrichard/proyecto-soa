@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/syles.css}">
+    <title>Clientes</title>
+</head>
+<body>
+    <header th:replace="plantilla :: header"></header>
+    <nav th:replace="plantilla :: navbar"></nav>
+    <div class="container">
+        <form th:action="@{/sucursal}" th:object="${sucursal}" method="POST">
+            <div class="row">
+                <div class="col">
+                    <input type="text" id="codigo" class="form-control" placeholder="Codigo" th:field="*{codSucursal}">
+                </div>
+                <div class="col">
+                    <input type="text" id="nombre" class="form-control" placeholder="Direccion" th:field="*{direccion}">
+                </div>
+                <div class="col">
+                    <input type="text" id="saldo" class="form-control" placeholder="Telefono"  th:field="*{telefono}">
+                </div>
+                <div class="col">
+                    <input type="text" id="limite" class="form-control" placeholder="Ciudad" th:field="*{ciudad}">
+                </div>
+                <div class="col">
+                    <input type="submit" value="Crear" class="btn btn-primary mb-3">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <table class="table table-bordered" id="tabla-estudiantes">
+            <thead class="table-dark text-center">
+            <tr>
+                <th>Codigo</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Ciudad</th>
+                <th>Codigo del Cliente</th>
+                <th>Nombre del Cliente</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody class="text-center">
+            <tr th:each="sucursal : ${sucursales}">
+                <td th:text="${sucursal.getCodSucursal()}"></td>
+                <td th:text="${sucursal.getDireccion()}"></td>
+                <td th:text="${sucursal.getTelefono()}"></td>
+                <td th:text="${sucursal.getCiudad()}"></td>
+                <td th:text="${sucursal.getCliente().getCodCliente()}"></td>
+                <td th:text="${sucursal.getCliente().getNomCliente()}"></td>
+                <td>
+                    <a th:href="@{'/sucursal/'+${sucursal.getCodSucursal()}}" class="btn btn-warning">Editar</a>
+                    <a th:href="@{'/sucursal/eliminar/'+${sucursal.getCodSucursal()}}" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:replace="plantilla :: footer"></div>
+
+</body>
+</html>

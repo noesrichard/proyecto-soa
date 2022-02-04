@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/syles.css}">
+    <title>Editar CLiente</title>
+</head>
+<body>
+    <header th:replace="plantilla :: header"></header>
+    <nav th:replace="plantilla :: navbar"></nav>
+    <div class="container">
+        <form th:action="@{/planta/${planta.getCodPlanta()}}" th:object="${planta}" method="POST">
+            <div class="form-group">
+                <label for="cedula">Codigo</label>
+                <input type="text" id="cedula" class="form-control" placeholder="Codigo" th:value="${planta.getCodPlanta()}" th:field="*{codPlanta}">
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" class="form-control" placeholder="Nombre" th:value="${planta.getNomPlanta()}" th:field="*{nomPlanta}">
+            </div>
+            <div class="form-group">
+                <label for="saldo">Direccion</label>
+                <input type="text" id="saldo" class="form-control" placeholder="Direccion" th:value="${planta.getDireccion()}" th:field="*{direccion}">
+            </div>
+            <div class="form-group">
+                <label for="limite">Telefono</label>
+                <input type="text" id="limite" class="form-control" placeholder="Telefono" th:value="${planta.getTelefono()}" th:field="*{telefono}">
+            </div>
+            <input class="btn btn-warning" type="submit" value="Editar">
+        </form>
+    </div>
+    <div th:replace="plantilla :: footer"></div>
+</body>
+</html>

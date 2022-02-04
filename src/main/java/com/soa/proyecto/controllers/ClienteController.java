@@ -20,7 +20,7 @@ public class ClienteController {
         List<Cliente> lista = clienteServicios.get();
         model.addAttribute("cliente", new Cliente());
         model.addAttribute("clientes", lista);
-        return "clientes";
+        return "clientes/clientes";
     }
 
     @PostMapping("/cliente")
@@ -36,7 +36,7 @@ public class ClienteController {
         cliente.setCodCliente(codCliente);
         Cliente clienteEncontrado = clienteServicios.get(cliente);
         model.addAttribute("cliente", clienteEncontrado);
-        return "edit-cliente";
+        return "clientes/edit-cliente";
     }
 
     @PostMapping("/cliente/{codCliente}")

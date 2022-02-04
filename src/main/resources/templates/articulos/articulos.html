@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/syles.css}">
+    <title>Articulos</title>
+</head>
+<body>
+    <header th:replace="plantilla :: header"></header>
+    <nav th:replace="plantilla :: navbar"></nav>
+    <div class="container">
+        <form th:action="@{/articulo}" th:object="${articulo}" method="POST">
+            <div class="row">
+                <div class="col">
+                    <input type="text" id="cedula" class="form-control" placeholder="Codigo" th:field="*{codArticulo}">
+                </div>
+                <div class="col">
+                    <input type="text" id="nombre" class="form-control" placeholder="Nombre" th:field="*{nomArticulo}">
+                </div>
+                <div class="col">
+                    <input type="text" id="saldo" class="form-control" placeholder="Color"  th:field="*{color}">
+                </div>
+                <div class="col">
+                    <input type="text" id="limite" class="form-control" placeholder="Peso" th:field="*{peso}">
+                </div>
+                <div class="col">
+                    <input type="text" id="descuento" class="form-control" placeholder="Capcidad" th:field="*{capacidad}">
+                </div>
+                <div class="col">
+                    <input type="submit" value="Crear" class="btn btn-primary mb-3">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <table class="table table-bordered" id="tabla-estudiantes">
+            <thead class="table-dark text-center">
+            <tr>
+                <th>Cédula</th>
+                <th>Nombre</th>
+                <th>Color</th>
+                <th>Peso</th>
+                <th>Capacidad</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody class="text-center">
+            <tr th:each="articulo : ${articulos}">
+                <td th:text="${articulo.getCodArticulo()}"></td>
+                <td th:text="${articulo.getNomArticulo()}"></td>
+                <td th:text="${articulo.getColor()}"></td>
+                <td th:text="${articulo.getPeso()}"></td>
+                <td th:text="${articulo.getCapacidad()}"></td>
+                <td>
+                    <a th:href="@{'/articulo/'+${articulo.getCodArticulo()}}" class="btn btn-warning">Editar</a>
+                    <a th:href="@{'/articulo/eliminar/'+${articulo.getCodArticulo()}}" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:replace="plantilla :: footer"></div>
+
+</body>
+</html>

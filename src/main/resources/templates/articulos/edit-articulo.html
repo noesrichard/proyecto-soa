@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/syles.css}">
+    <title>Editar Articulo</title>
+</head>
+<body>
+    <header th:replace="plantilla :: header"></header>
+    <nav th:replace="plantilla :: navbar"></nav>
+    <div class="container">
+        <form th:action="@{/articulo/${articulo.getCodArticulo()}}" th:object="${articulo}" method="POST">
+            <div class="form-group">
+                <label for="cedula">Codigo</label>
+                <input type="text" id="cedula" class="form-control" placeholder="Codigo" th:value="${articulo.getCodArticulo()}" th:field="*{codArticulo}">
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" class="form-control" placeholder="Nombre" th:value="${articulo.getNomArticulo()}" th:field="*{nomArticulo}">
+            </div>
+            <div class="form-group">
+                <label for="saldo">Color</label>
+                <input type="text" id="saldo" class="form-control" placeholder="Color" th:value="${articulo.getColor()}" th:field="*{color}">
+            </div>
+            <div class="form-group">
+                <label for="limite">Peso</label>
+                <input type="text" id="limite" class="form-control" placeholder="Peso" th:value="${articulo.getPeso()}" th:field="*{peso}">
+            </div>
+            <div class="form-group">
+                <label for="descuento">Capaciad</label>
+                <input type="text" id="descuento" class="form-control" placeholder="Capaciad" th:value="${articulo.getCapacidad()}" th:field="*{capacidad}">
+            </div>
+            <input class="btn btn-warning" type="submit" value="Editar">
+        </form>
+    </div>
+    <div th:replace="plantilla :: footer"></div>
+</body>
+</html>
