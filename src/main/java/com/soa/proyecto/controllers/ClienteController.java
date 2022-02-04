@@ -3,17 +3,11 @@ package com.soa.proyecto.controllers;
 import com.soa.proyecto.entidades.Cliente;
 import com.soa.proyecto.servicios.ClienteServicios;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class ClienteController {
@@ -33,6 +27,22 @@ public class ClienteController {
     public String save(@ModelAttribute("cliente") Cliente cliente){
         System.out.println(cliente);
         clienteServicios.crear(cliente);
+        return "redirect:/cliente";
+    }
+
+    @GetMapping("/cliente/{codCliente}")
+    public String getEditClientePage(@PathVariable(name = "codCliente") String codCliente, Model model){
+        Cliente cliente = new Cliente();
+        cliente.setCodCliente(codCliente);
+        Cliente clienteEncontrado = clienteServicios.get(cliente);
+        model.addAttribute("cliente", clienteEncontrado);
+        return "edit-cliente";
+    }
+
+    @PostMapping("/cliente/{codCliente}")
+    public String editCliente(@ModelAttribute("cliente") Cliente cliente){
+        System.out.println(cliente);
+        clienteServicios.edit(cliente);
         return "redirect:/cliente";
     }
 }

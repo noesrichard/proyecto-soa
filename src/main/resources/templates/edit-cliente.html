@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/syles.css}">
+    <title>Editar CLiente</title>
+</head>
+<body>
+    <header th:replace="plantilla :: header"></header>
+    <nav th:replace="plantilla :: navbar"></nav>
+    <div class="container">
+        <form th:action="@{/cliente/${cliente.getCodCliente()}}" th:object="${cliente}" method="POST">
+            <div class="form-group">
+                <label for="cedula">Cedula</label>
+                <input type="text" id="cedula" class="form-control" placeholder="Cedula" th:value="${cliente.getCodCliente()}" th:field="*{codCliente}">
+            </div>
+            <div class="form-group">
+                <label for="nombre">Cedula</label>
+                <input type="text" id="nombre" class="form-control" placeholder="Cedula" th:value="${cliente.getNomCliente()}" th:field="*{nomCliente}">
+            </div>
+            <div class="form-group">
+                <label for="saldo">Cedula</label>
+                <input type="text" id="saldo" class="form-control" placeholder="Cedula" th:value="${cliente.getSaldo()}" th:field="*{saldo}">
+            </div>
+            <div class="form-group">
+                <label for="limite">Cedula</label>
+                <input type="text" id="limite" class="form-control" placeholder="Cedula" th:value="${cliente.getLimiteCredito()}" th:field="*{limiteCredito}">
+            </div>
+            <div class="form-group">
+                <label for="descuento">Cedula</label>
+                <input type="text" id="descuento" class="form-control" placeholder="Cedula" th:value="${cliente.getPctDescuento()}" th:field="*{pctDescuento}">
+            </div>
+            <input class="btn btn-warning" type="submit" value="Editar">
+        </form>
+    </div>
+    <div th:replace="plantilla :: footer"></div>
+</body>
+</html>

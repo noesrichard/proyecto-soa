@@ -22,7 +22,7 @@ public class ClienteServicios implements Servicio<Cliente> {
 
     @Override
     public Cliente get(Cliente entidad) {
-        return null;
+        return clienteDAO.findByCodCliente(entidad.getCodCliente());
     }
 
     @Override
@@ -31,8 +31,13 @@ public class ClienteServicios implements Servicio<Cliente> {
     }
 
     @Override
-    public Cliente actualizar(Cliente entidad) {
-        return null;
+    public Cliente edit(Cliente entidad) {
+        Cliente c = clienteDAO.findByCodCliente(entidad.getCodCliente());
+        c.setNomCliente(entidad.getNomCliente());
+        c.setLimiteCredito(entidad.getLimiteCredito());
+        c.setSaldo(entidad.getSaldo());
+        c.setPctDescuento(entidad.getPctDescuento());
+        return clienteDAO.save(c);
     }
 
     @Override

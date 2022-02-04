@@ -54,19 +54,13 @@
                 <td th:text="${cliente.getLimiteCredito()}"></td>
                 <td th:text="${cliente.getPctDescuento()}"></td>
                 <td>
-                    <button class="btn btn-warning">Editar</button>
+                    <a th:href="@{'/cliente/'+${cliente.getCodCliente()}}" class="btn btn-warning">Editar</a>
                     <button class="btn btn-danger">Eliminar</button>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
-    <script>
-        const editar = () => {
-
-        }
-    </script>
-
     <div th:replace="plantilla :: footer"></div>
 
 </body>

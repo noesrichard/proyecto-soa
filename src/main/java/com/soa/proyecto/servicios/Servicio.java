@@ -10,7 +10,7 @@ public interface Servicio<T>{
 
     T crear(T entidad);
 
-    T actualizar(T entidad);
+    T edit(T entidad);
 
     T eliminar(T entidad);
 

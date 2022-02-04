@@ -30,7 +30,7 @@ public class UsuarioServicios implements Servicio<Usuario> {
     }
 
     @Override
-    public Usuario actualizar(Usuario entidad) {
+    public Usuario edit(Usuario entidad) {
         return null;
     }
 
