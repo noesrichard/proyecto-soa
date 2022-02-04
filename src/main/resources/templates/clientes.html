@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <th:block th:each="cliente: ${clientes}">
+           <tr>
+               <td th:text="${cliente.getCodCliente()}"></td>
+               <td th:text="${cliente.getNomCliente()}"></td>
+           </tr>
+        </th:block>
+    </table>
+</body>
+</html>
