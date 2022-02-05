@@ -24,10 +24,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/adm/**").hasAuthority("ADMIN")
-                .antMatchers("/clt").hasAuthority("CLIENTE")
+                .antMatchers("/clt/**").hasAuthority("CLIENTE")
                 .and()
-                .formLogin();
-
+                .formLogin().loginPage("/login").permitAll()
+                .and()
+                .logout().logoutSuccessUrl("/login?logout=true").permitAll();
+        http.csrf().disable();
     }
 
 }

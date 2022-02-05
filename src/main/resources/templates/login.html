@@ -8,19 +8,18 @@
 <body class="text-center">
 
 <main class="form-signin">
-    <form>
+    <form method="POST" th:action="@{/login}" class="form-signin">
         <h1 class="h3 mb-3 fw-normal">Inicio de Sesión</h1>
 
         <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Usuario</label>
+            <input name="username" type="text" class="form-control" id="username" placeholder="Usuario">
+            <label for="username">Usuario</label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Contraseña</label>
+            <input name="password" type="password" class="form-control" id="password" placeholder="Contraseña">
+            <label for="password">Contraseña</label>
         </div>
-
-        <a th:href="@{'/home'}" class="w-100 btn btn-lg btn-primary">Ingresar</a>
+        <input type="submit" class="w-100 btn btn-lg btn-primary" value="Ingresar">
     </form>
 </main>
 </body>
