@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -18,7 +19,10 @@
         <br>
         <span class="fs-5" th:text="'Para el cliente: '+${pedido.getSucursal().getCliente().getNomCliente()}"></span>
         <br>
-        <a th:href="@{/adm/pedido}" class="btn btn-danger">Regresar</a>
+        <a sec:authorize="hasAuthority('CLIENTE')"
+                th:href="@{/clt/pedido}" class="btn btn-danger">Regresar</a>
+        <a sec:authorize="hasAuthority('ADMIN')"
+           th:href="@{/adm/pedido}" class="btn btn-danger">Regresar</a>
     </div>
 
     <div class="container">
