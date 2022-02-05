@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/syles.css}">
+    <title>Articulos</title>
+</head>
+<body>
+    <header th:replace="plantilla :: header"></header>
+    <nav th:replace="plantilla :: navbar"></nav>
+
+    <div class="container">
+        <span class="fs-5" th:text="'Pedido Numero: '+${pedido.getCodPedido()}"></span>
+        <br>
+        <span class="fs-5" th:text="'Con fecha: '+${pedido.getFechaPedido()}"></span>
+        <br>
+        <span class="fs-5" th:text="'Para el cliente: '+${pedido.getSucursal().getCliente().getNomCliente()}"></span>
+        <br>
+        <a th:href="@{/adm/pedido}" class="btn btn-danger">Regresar</a>
+    </div>
+
+    <div class="container">
+        <table class="table table-bordered" id="tabla-pedidos">
+            <thead class="table-dark text-center">
+            <tr>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Color</th>
+                <th>Peso</th>
+                <th>Capacidad</th>
+                <th>Cantidad</th>
+            </tr>
+            </thead>
+            <tbody class="text-center">
+            <tr th:each="detalle : ${detalles}">
+                <td th:text="${detalle.articulo.codArticulo}"></td>
+                <td th:text="${detalle.articulo.nomArticulo}"></td>
+                <td th:text="${detalle.articulo.color}"></td>
+                <td th:text="${detalle.articulo.peso}"></td>
+                <td th:text="${detalle.articulo.capacidad}"></td>
+                <td th:text="${detalle.cantidad}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:replace="plantilla :: footer"></div>
+
+</body>
+</html>

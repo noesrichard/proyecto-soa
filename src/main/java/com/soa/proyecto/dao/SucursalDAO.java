@@ -4,8 +4,12 @@ import com.soa.proyecto.entidades.Cliente;
 import com.soa.proyecto.entidades.Sucursal;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface SucursalDAO extends JpaRepository<Sucursal, String> {
-    Sucursal findByCodSucursal(String codCliente);
+import java.util.List;
 
-    void deleteByCodSucursal(String codCliente);
+public interface SucursalDAO extends JpaRepository<Sucursal, String> {
+    Sucursal findByCodSucursal(String codSucursal);
+
+    void deleteByCodSucursal(String codSucursal);
+
+    List<Sucursal> findByCliente(Cliente cliente);
 }

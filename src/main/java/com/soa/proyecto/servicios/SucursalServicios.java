@@ -1,6 +1,7 @@
 package com.soa.proyecto.servicios;
 
 import com.soa.proyecto.dao.SucursalDAO;
+import com.soa.proyecto.entidades.Cliente;
 import com.soa.proyecto.entidades.Sucursal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,5 +44,9 @@ public class SucursalServicios implements Servicio<Sucursal>{
     public Sucursal eliminar(Sucursal entidad) {
         sucursalDAO.deleteByCodSucursal(entidad.getCodSucursal());
         return entidad;
+    }
+
+    public List<Sucursal> getByCliente(Cliente cliente){
+       return sucursalDAO.findByCliente(cliente);
     }
 }

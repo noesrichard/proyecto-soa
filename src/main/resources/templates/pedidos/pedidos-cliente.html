@@ -11,6 +11,19 @@
     <header th:replace="plantilla :: header"></header>
     <nav th:replace="plantilla :: navbar"></nav>
     <div class="container">
+        <form th:action="@{/clt/nuevo-pedido}" th:object="${pedido}" method="get">
+            <div class="row">
+                <div class="col">
+                    <input type="text" id="codigo" class="form-control" placeholder="Codigo Sucursal" th:field="*{sucursal.codSucursal}">
+                </div>
+                <div class="col">
+                    <input type="submit" value="Crear Nuevo Pedido" class="btn btn-primary mb-3">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container">
+
         <table class="table table-bordered" id="tabla-estudiantes">
             <thead class="table-dark text-center">
             <tr>
@@ -38,7 +51,8 @@
             </tbody>
         </table>
     </div>
-    <div th:replace="plantilla :: footer"></div>
 
+    <div th:replace="plantilla :: footer"></div>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

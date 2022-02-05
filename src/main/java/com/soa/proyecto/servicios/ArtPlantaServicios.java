@@ -2,6 +2,7 @@ package com.soa.proyecto.servicios;
 
 import com.soa.proyecto.dao.ArtPlantaDAO;
 import com.soa.proyecto.entidades.ArtPlanta;
+import com.soa.proyecto.entidades.Articulo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,5 +43,9 @@ public class ArtPlantaServicios implements Servicio<ArtPlanta>{
     public ArtPlanta eliminar(ArtPlanta entidad) {
         artPlantaDAO.deleteByCodArtPlanta(entidad.getCodArtPlanta());
         return entidad;
+    }
+
+    public List<ArtPlanta> getByArticulo(Articulo articulo){
+        return artPlantaDAO.findByArticulo(articulo);
     }
 }

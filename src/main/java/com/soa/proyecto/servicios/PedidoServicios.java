@@ -2,6 +2,7 @@ package com.soa.proyecto.servicios;
 
 import com.soa.proyecto.dao.PedidoDAO;
 import com.soa.proyecto.entidades.Pedido;
+import com.soa.proyecto.entidades.Sucursal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,5 +42,9 @@ public class PedidoServicios implements Servicio<Pedido>{
     public Pedido eliminar(Pedido entidad) {
         pedidoDAO.deleteByCodPedido(entidad.getCodPedido());
         return entidad;
+    }
+
+    public List<Pedido> getBySucursal(Sucursal sucursal){
+        return pedidoDAO.findBySucursal(sucursal);
     }
 }

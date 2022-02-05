@@ -14,8 +14,9 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class Pedido implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codpedido")
-    private Long codPedido;
+    private Integer codPedido;
 
     @Column(name = "fechapedido")
     private String fechaPedido;
@@ -23,5 +24,7 @@ public class Pedido implements Serializable {
     @ManyToOne
     @JoinColumn(name = "sucursal")
     private Sucursal sucursal;
+
+
 
 }

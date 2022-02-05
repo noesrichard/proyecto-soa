@@ -37,10 +37,7 @@
                     <a class="nav-link active" aria-current="page" th:href="@{'/'}">Inicio</a>
                 </li>
                 <li class="nav-item" sec:authorize="hasAuthority('CLIENTE')">
-                    <a class="nav-link active" aria-current="page" th:href="@{'/'}">Crear Pedido</a>
-                </li>
-                <li class="nav-item" sec:authorize="hasAuthority('CLIENTE')">
-                    <a class="nav-link active" aria-current="page" th:href="@{'/'}">Mis Pedidos</a>
+                    <a class="nav-link active" aria-current="page" th:href="@{'/clt/pedido'}">Pedidos</a>
                 </li>
                 <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
                     <a class="nav-link" th:href="@{'/adm/cliente'}">Clientes</a>

@@ -1,10 +1,15 @@
 package com.soa.proyecto.dao;
 
 import com.soa.proyecto.entidades.Pedido;
+import com.soa.proyecto.entidades.Sucursal;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PedidoDAO extends JpaRepository<Pedido, Long> {
-    Pedido findByCodPedido(Long codPedido);
+import java.util.List;
 
-    void deleteByCodPedido(Long codPedido);
+public interface PedidoDAO extends JpaRepository<Pedido, Integer> {
+    Pedido findByCodPedido(Integer codPedido);
+
+    void deleteByCodPedido(Integer codPedido);
+
+    List<Pedido> findBySucursal(Sucursal sucursal);
 }
