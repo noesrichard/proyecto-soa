@@ -12,7 +12,7 @@
     <nav th:replace="plantilla :: navbar"></nav>
     <div class="container">
         <span class="fs-5">Crear Existencia con Articulo Nuevo</span>
-        <form th:action="@{/artplanta}" th:object="${artPlanta}" method="POST">
+        <form th:action="@{/adm/artplanta}" th:object="${artPlanta}" method="POST">
             <div class="row">
                 <div class="col">
                     <input type="text" id="cedula" class="form-control" placeholder="Codigo" th:field="*{articulo.codArticulo}">
@@ -46,7 +46,7 @@
     </div>
     <div class="container">
         <span class="fs-5">Crear Existencia</span>
-        <form th:action="@{/artplanta/existente}" th:object="${artPlanta}" method="POST">
+        <form th:action="@{/adm/artplanta/existente}" th:object="${artPlanta}" method="POST">
             <div class="row">
                 <div class="col">
                     <input type="text" id="articulo" class="form-control" placeholder="Codigo" th:field="*{articulo.codArticulo}">
@@ -88,8 +88,8 @@
                 <td th:text="${artPlanta.getArticulo().getCapacidad()}"></td>
                 <td th:text="${artPlanta.getPlanta().getCodPlanta()}"></td>
                 <td>
-                    <a th:href="@{'/artplanta/'+${artPlanta.getCodArtPlanta()}}" class="btn btn-warning">Editar</a>
-                    <a th:href="@{'/artplanta/eliminar/'+${artPlanta.getCodArtPlanta()}}" class="btn btn-danger">Eliminar</a>
+                    <a th:href="@{'/adm/artplanta/'+${artPlanta.getCodArtPlanta()}}" class="btn btn-warning">Editar</a>
+                    <a th:href="@{'/adm/artplanta/eliminar/'+${artPlanta.getCodArtPlanta()}}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
             </tbody>

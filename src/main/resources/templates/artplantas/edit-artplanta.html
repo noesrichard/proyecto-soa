@@ -10,7 +10,7 @@
     <header th:replace="plantilla :: header"></header>
     <nav th:replace="plantilla :: navbar"></nav>
     <div class="container">
-        <form th:action="@{/articulo/${artPlanta.getCodArtPlanta()}}" th:object="${artPlanta}" method="POST">
+        <form th:action="@{/adm/artplanta/${artPlanta.getCodArtPlanta()}}" th:object="${artPlanta}" method="POST">
             <div class="form-group">
                 <label for="nombre">Nombre</label>
                 <input type="text" id="nombre" class="form-control" placeholder="Nombre" th:value="${artPlanta.getArticulo()}" th:field="*{articulo.nomArticulo}">

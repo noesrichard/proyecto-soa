@@ -18,7 +18,9 @@
     </a>
 
     <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Cerrar Sesión</a></li>
+        <li class="nav-item">
+            <a th:href="@{'/logout'}" class="nav-link active" aria-current="page">Cerrar Sesión</a>
+        </li>
     </ul>
 </header>
 
@@ -34,22 +36,22 @@
                     <a class="nav-link active" aria-current="page" th:href="@{'/home'}">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{'/cliente'}">Clientes</a>
+                    <a class="nav-link" th:href="@{'/adm/cliente'}">Clientes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{'/sucursal'}">Sucursales</a>
+                    <a class="nav-link" th:href="@{'/adm/sucursal'}">Sucursales</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{'/pedido'}">Pedidos</a>
+                    <a class="nav-link" th:href="@{'/adm/pedido'}">Pedidos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{'/articulo'}">Articulos</a>
+                    <a class="nav-link" th:href="@{'/adm/articulo'}">Articulos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{'/planta'}">Plantas</a>
+                    <a class="nav-link" th:href="@{'/adm/planta'}">Plantas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{'/artplanta'}">Articulos En Planta</a>
+                    <a class="nav-link" th:href="@{'/adm/artplanta'}">Articulos En Planta</a>
                 </li>
             </ul>
         </div>

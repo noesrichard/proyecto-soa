@@ -11,7 +11,7 @@
     <header th:replace="plantilla :: header"></header>
     <nav th:replace="plantilla :: navbar"></nav>
     <div class="container">
-        <form th:action="@{/articulo}" th:object="${articulo}" method="POST">
+        <form th:action="@{/adm/articulo}" th:object="${articulo}" method="POST">
             <div class="row">
                 <div class="col">
                     <input type="text" id="cedula" class="form-control" placeholder="Codigo" th:field="*{codArticulo}">
@@ -54,8 +54,8 @@
                 <td th:text="${articulo.getPeso()}"></td>
                 <td th:text="${articulo.getCapacidad()}"></td>
                 <td>
-                    <a th:href="@{'/articulo/'+${articulo.getCodArticulo()}}" class="btn btn-warning">Editar</a>
-                    <a th:href="@{'/articulo/eliminar/'+${articulo.getCodArticulo()}}" class="btn btn-danger">Eliminar</a>
+                    <a th:href="@{'/adm/articulo/'+${articulo.getCodArticulo()}}" class="btn btn-warning">Editar</a>
+                    <a th:href="@{'/adm/articulo/eliminar/'+${articulo.getCodArticulo()}}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
             </tbody>

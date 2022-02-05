@@ -22,7 +22,7 @@ public class ArtPlantaController {
     @Autowired
     private ArticuloServicios articuloServicios;
 
-    @GetMapping("/artplanta")
+    @GetMapping("/adm/artplanta")
     public String getAll(Model model){
         ArtPlanta s = new ArtPlanta();
         List<ArtPlanta> artPlantas = artPlantaServicios.get();
@@ -31,20 +31,20 @@ public class ArtPlantaController {
         return "artplantas/artplantas";
     }
 
-    @PostMapping("/artplanta/existente")
+    @PostMapping("/adm/artplanta/existente")
     public String saveExistente(@ModelAttribute("artPlanta") ArtPlanta artPlanta){
         System.out.println(artPlanta.getArticulo());
         artPlantaServicios.crear(artPlanta);
-        return "redirect:/artplanta";
+        return "redirect:/adm/artplanta";
     }
-    @PostMapping("/artplanta")
+    @PostMapping("/adm/artplanta")
     public String save(@ModelAttribute("artPlanta") ArtPlanta artPlanta){
         articuloServicios.crear(artPlanta.getArticulo());
         artPlantaServicios.crear(artPlanta);
-        return "redirect:/artplanta";
+        return "redirect:/adm/artplanta";
     }
 
-    @GetMapping("/artplanta/{codArtPlanta}")
+    @GetMapping("/adm/artplanta/{codArtPlanta}")
     public String getEditArtPlantaPage(@PathVariable(name = "codArtPlanta") Integer codArtPlanta, Model model){
         ArtPlanta artPlanta = new ArtPlanta();
         artPlanta.setCodArtPlanta(codArtPlanta);
@@ -53,19 +53,19 @@ public class ArtPlantaController {
         return "artplantas/edit-artplanta";
     }
 
-    @PostMapping("/artplanta/{codArtPlanta}")
+    @PostMapping("/adm/artplanta/{codArtPlanta}")
     public String editArtPlanta(@ModelAttribute("artPlanta") ArtPlanta artPlanta){
         System.out.println(artPlanta);
         artPlantaServicios.edit(artPlanta);
-        return "redirect:/artplanta";
+        return "redirect:/adm/artplanta";
     }
 
-    @GetMapping("/artplanta/eliminar/{codArtPlanta}")
+    @GetMapping("/adm/artplanta/eliminar/{codArtPlanta}")
     public String deleteucursal(@PathVariable(name = "codArtPlanta") Integer codArtPlanta){
         System.out.println(codArtPlanta);
         ArtPlanta c = new ArtPlanta();
         c.setCodArtPlanta(codArtPlanta);
         artPlantaServicios.eliminar(c);
-        return "redirect:/artplanta";
+        return "redirect:/adm/artplanta";
     }
 }

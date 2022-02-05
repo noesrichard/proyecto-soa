@@ -18,7 +18,7 @@ public class ArticuloController {
     @Autowired
     private ArticuloServicios articuloServicios;
 
-    @GetMapping("/articulo")
+    @GetMapping("/adm/articulo")
     public String getAll(Model model){
         List<Articulo> lista = articuloServicios.get();
         model.addAttribute("articulo", new Articulo());
@@ -26,14 +26,14 @@ public class ArticuloController {
         return "articulos/articulos";
     }
 
-    @PostMapping("/articulo")
+    @PostMapping("/adm/articulo")
     public String save(@ModelAttribute("articulo") Articulo articulo){
         System.out.println(articulo);
         articuloServicios.crear(articulo);
-        return "redirect:/articulo";
+        return "redirect:/adm/articulo";
     }
 
-    @GetMapping("/articulo/{codArticulo}")
+    @GetMapping("/adm/articulo/{codArticulo}")
     public String getEditArticuloPage(@PathVariable(name = "codArticulo") String codArticulo, Model model){
         Articulo articulo = new Articulo();
         articulo.setCodArticulo(codArticulo);
@@ -42,19 +42,19 @@ public class ArticuloController {
         return "articulos/edit-articulo";
     }
 
-    @PostMapping("/articulo/{codArticulo}")
+    @PostMapping("/adm/articulo/{codArticulo}")
     public String editArticulo(@ModelAttribute("articulo") Articulo articulo){
         System.out.println(articulo);
         articuloServicios.edit(articulo);
-        return "redirect:/articulo";
+        return "redirect:/adm/articulo";
     }
 
-    @GetMapping("/articulo/eliminar/{codArticulo}")
+    @GetMapping("/adm/articulo/eliminar/{codArticulo}")
     public String deleteArticulo(@PathVariable(name = "codArticulo") String codArticulo){
         System.out.println(codArticulo);
         Articulo c = new Articulo();
         c.setCodArticulo(codArticulo);
         articuloServicios.eliminar(c);
-        return "redirect:/articulo";
+        return "redirect:/adm/articulo";
     }
 }
