@@ -19,7 +19,7 @@ public class SucursalController {
     @Autowired
     private SucursalServicios sucursalServicios;
 
-    @GetMapping("/sucursal")
+    @GetMapping("/adm/sucursal")
     public String getAll(Model model){
         Sucursal s = new Sucursal();
         List<Sucursal> sucursales = sucursalServicios.get();
@@ -28,14 +28,14 @@ public class SucursalController {
         return "sucursales/sucursal";
     }
 
-    @PostMapping("/sucursal")
+    @PostMapping("/adm/sucursal")
     public String save(@ModelAttribute("sucursal") Sucursal sucursal){
         sucursalServicios.crear(sucursal);
-        return "redirect:/sucursal";
+        return "redirect:/adm/sucursal";
     }
 
 
-    @GetMapping("/sucursal/{codSucursal}")
+    @GetMapping("/adm/sucursal/{codSucursal}")
     public String getEditSucursalPage(@PathVariable(name = "codSucursal") String codSucursal, Model model){
         Sucursal sucursal = new Sucursal();
         sucursal.setCodSucursal(codSucursal);
@@ -44,19 +44,19 @@ public class SucursalController {
         return "sucursales/edit-sucursal";
     }
 
-    @PostMapping("/sucursal/{codSucursal}")
+    @PostMapping("/adm/sucursal/{codSucursal}")
     public String editSucursal(@ModelAttribute("sucursal") Sucursal sucursal){
         System.out.println(sucursal);
         sucursalServicios.edit(sucursal);
-        return "redirect:/sucursal";
+        return "redirect:/adm/sucursal";
     }
 
-    @GetMapping("/sucursal/eliminar/{codSucursal}")
+    @GetMapping("/adm/sucursal/eliminar/{codSucursal}")
     public String deleteucursal(@PathVariable(name = "codSucursal") String codSucursal){
         System.out.println(codSucursal);
         Sucursal c = new Sucursal();
         c.setCodSucursal(codSucursal);
         sucursalServicios.eliminar(c);
-        return "redirect:/sucursal";
+        return "redirect:/adm/sucursal";
     }
 }

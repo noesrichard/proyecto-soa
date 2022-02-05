@@ -18,7 +18,7 @@ public class PlantaController {
     @Autowired
     private PlantaServicios plantaServicios;
 
-    @GetMapping("/planta")
+    @GetMapping("/adm/planta")
     public String getAll(Model model){
         List<Planta> lista = plantaServicios.get();
         model.addAttribute("planta", new Planta());
@@ -26,14 +26,14 @@ public class PlantaController {
         return "plantas/plantas";
     }
 
-    @PostMapping("/planta")
+    @PostMapping("/adm/planta")
     public String save(@ModelAttribute("planta") Planta planta){
         System.out.println(planta);
         plantaServicios.crear(planta);
-        return "redirect:/planta";
+        return "redirect:/adm/planta";
     }
 
-    @GetMapping("/planta/{codPlanta}")
+    @GetMapping("/adm/planta/{codPlanta}")
     public String getEditPlantaPage(@PathVariable(name = "codPlanta") String codPlanta, Model model){
         Planta planta = new Planta();
         planta.setCodPlanta(codPlanta);
@@ -42,19 +42,19 @@ public class PlantaController {
         return "plantas/edit-planta";
     }
 
-    @PostMapping("/planta/{codPlanta}")
+    @PostMapping("/adm/planta/{codPlanta}")
     public String editPlanta(@ModelAttribute("planta") Planta planta){
         System.out.println(planta);
         plantaServicios.edit(planta);
-        return "redirect:/planta";
+        return "redirect:/adm/planta";
     }
 
-    @GetMapping("/planta/eliminar/{codPlanta}")
+    @GetMapping("/adm/planta/eliminar/{codPlanta}")
     public String deletePlanta(@PathVariable(name = "codPlanta") String codPlanta){
         System.out.println(codPlanta);
         Planta c = new Planta();
         c.setCodPlanta(codPlanta);
         plantaServicios.eliminar(c);
-        return "redirect:/planta";
+        return "redirect:/adm/planta";
     }
 }

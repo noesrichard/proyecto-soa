@@ -11,7 +11,7 @@
     <header th:replace="plantilla :: header"></header>
     <nav th:replace="plantilla :: navbar"></nav>
     <div class="container">
-        <form th:action="@{/planta}" th:object="${planta}" method="POST">
+        <form th:action="@{/adm/planta}" th:object="${planta}" method="POST">
             <div class="row">
                 <div class="col">
                     <input type="text" id="cedula" class="form-control" placeholder="Codigo" th:field="*{codPlanta}">
@@ -49,8 +49,8 @@
                 <td th:text="${planta.getDireccion()}"></td>
                 <td th:text="${planta.getTelefono()}"></td>
                 <td>
-                    <a th:href="@{'/planta/'+${planta.getCodPlanta()}}" class="btn btn-warning">Editar</a>
-                    <a th:href="@{'/planta/eliminar/'+${planta.getCodPlanta()}}" class="btn btn-danger">Eliminar</a>
+                    <a th:href="@{'/adm/planta/'+${planta.getCodPlanta()}}" class="btn btn-warning">Editar</a>
+                    <a th:href="@{'/adm/planta/eliminar/'+${planta.getCodPlanta()}}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
             </tbody>

@@ -18,7 +18,7 @@ public class PedidoController {
     @Autowired
     private PedidoServicios pedidoServicios;
 
-    @GetMapping("/pedido")
+    @GetMapping("/adm/pedido")
     public String getAll(Model model){
         Pedido s = new Pedido();
         List<Pedido> pedidos = pedidoServicios.get();
@@ -27,14 +27,14 @@ public class PedidoController {
         return "pedidos/pedido";
     }
 
-    @PostMapping("/pedido")
+    @PostMapping("/adm/pedido")
     public String save(@ModelAttribute("pedido") Pedido pedido){
         pedidoServicios.crear(pedido);
-        return "redirect:/pedido";
+        return "redirect:/adm/pedido";
     }
 
 
-    @GetMapping("/pedido/{codPedido}")
+    @GetMapping("/adm/pedido/{codPedido}")
     public String getEditPedidoPage(@PathVariable(name = "codPedido") Long codPedido, Model model){
         Pedido pedido = new Pedido();
         pedido.setCodPedido(codPedido);
@@ -43,19 +43,19 @@ public class PedidoController {
         return "pedidos/edit-pedido";
     }
 
-    @PostMapping("/pedido/{codPedido}")
+    @PostMapping("/adm/pedido/{codPedido}")
     public String editPedido(@ModelAttribute("pedido") Pedido pedido){
         System.out.println(pedido);
         pedidoServicios.edit(pedido);
-        return "redirect:/pedido";
+        return "redirect:/adm/pedido";
     }
 
-    @GetMapping("/pedido/eliminar/{codPedido}")
+    @GetMapping("/adm/pedido/eliminar/{codPedido}")
     public String deleteucursal(@PathVariable(name = "codPedido") Long codPedido){
         System.out.println(codPedido);
         Pedido c = new Pedido();
         c.setCodPedido(codPedido);
         pedidoServicios.eliminar(c);
-        return "redirect:/pedido";
+        return "redirect:/adm/pedido";
     }
 }

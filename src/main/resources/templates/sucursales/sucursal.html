@@ -11,7 +11,7 @@
     <header th:replace="plantilla :: header"></header>
     <nav th:replace="plantilla :: navbar"></nav>
     <div class="container">
-        <form th:action="@{/sucursal}" th:object="${sucursal}" method="POST">
+        <form th:action="@{/adm/sucursal}" th:object="${sucursal}" method="POST">
             <div class="row">
                 <div class="col">
                     <input type="text" id="codigo" class="form-control" placeholder="Codigo" th:field="*{codSucursal}">
@@ -56,8 +56,8 @@
                 <td th:text="${sucursal.getCliente().getCodCliente()}"></td>
                 <td th:text="${sucursal.getCliente().getNomCliente()}"></td>
                 <td>
-                    <a th:href="@{'/sucursal/'+${sucursal.getCodSucursal()}}" class="btn btn-warning">Editar</a>
-                    <a th:href="@{'/sucursal/eliminar/'+${sucursal.getCodSucursal()}}" class="btn btn-danger">Eliminar</a>
+                    <a th:href="@{'/adm/sucursal/'+${sucursal.getCodSucursal()}}" class="btn btn-warning">Editar</a>
+                    <a th:href="@{'/adm/sucursal/eliminar/'+${sucursal.getCodSucursal()}}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
             </tbody>

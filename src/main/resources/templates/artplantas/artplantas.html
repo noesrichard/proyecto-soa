@@ -76,6 +76,8 @@
                 <th>Peso</th>
                 <th>Capacidad</th>
                 <th>Planta</th>
+                <th>Existencias</th>
+                <th>Nivel Riesgo</th>
                 <th>Acciones</th>
             </tr>
             </thead>
@@ -87,6 +89,8 @@
                 <td th:text="${artPlanta.getArticulo().getPeso()}"></td>
                 <td th:text="${artPlanta.getArticulo().getCapacidad()}"></td>
                 <td th:text="${artPlanta.getPlanta().getCodPlanta()}"></td>
+                <td th:text="${artPlanta.getExistencias()}"></td>
+                <td th:text="${artPlanta.getNivelRiesgo()}"></td>
                 <td>
                     <a th:href="@{'/adm/artplanta/'+${artPlanta.getCodArtPlanta()}}" class="btn btn-warning">Editar</a>
                     <a th:href="@{'/adm/artplanta/eliminar/'+${artPlanta.getCodArtPlanta()}}" class="btn btn-danger">Eliminar</a>

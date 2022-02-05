@@ -18,6 +18,10 @@ public class ArtPlanta implements Serializable {
     @Column(name = "codartplanta")
     private Integer codArtPlanta;
 
+    public Integer getCodigo(){
+        return codArtPlanta;
+    }
+
     @ManyToOne
     @JoinColumn(name = "planta")
     private Planta planta;

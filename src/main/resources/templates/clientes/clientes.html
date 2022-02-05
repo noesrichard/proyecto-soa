@@ -11,7 +11,7 @@
     <header th:replace="plantilla :: header"></header>
     <nav th:replace="plantilla :: navbar"></nav>
     <div class="container">
-        <form th:action="@{/cliente}" th:object="${cliente}" method="POST">
+        <form th:action="@{/adm/cliente}" th:object="${cliente}" method="POST">
             <div class="row">
                 <div class="col">
                     <input type="text" id="cedula" class="form-control" placeholder="Cedula" th:field="*{codCliente}">
@@ -54,8 +54,8 @@
                 <td th:text="${cliente.getLimiteCredito()}"></td>
                 <td th:text="${cliente.getPctDescuento()}"></td>
                 <td>
-                    <a th:href="@{'/cliente/'+${cliente.getCodCliente()}}" class="btn btn-warning">Editar</a>
-                    <a th:href="@{'/cliente/eliminar/'+${cliente.getCodCliente()}}" class="btn btn-danger">Eliminar</a>
+                    <a th:href="@{'/adm/cliente/'+${cliente.getCodCliente()}}" class="btn btn-warning">Editar</a>
+                    <a th:href="@{'/adm/cliente/eliminar/'+${cliente.getCodCliente()}}" class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
             </tbody>

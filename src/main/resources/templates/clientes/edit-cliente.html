@@ -10,7 +10,7 @@
     <header th:replace="plantilla :: header"></header>
     <nav th:replace="plantilla :: navbar"></nav>
     <div class="container">
-        <form th:action="@{/cliente/${cliente.getCodCliente()}}" th:object="${cliente}" method="POST">
+        <form th:action="@{/adm/cliente/${cliente.getCodCliente()}}" th:object="${cliente}" method="POST">
             <div class="form-group">
                 <label for="cedula">Cedula</label>
                 <input type="text" id="cedula" class="form-control" placeholder="Cedula" th:value="${cliente.getCodCliente()}" th:field="*{codCliente}">

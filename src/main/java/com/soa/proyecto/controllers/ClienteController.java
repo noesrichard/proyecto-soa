@@ -15,7 +15,7 @@ public class ClienteController {
     @Autowired
     private ClienteServicios clienteServicios;
 
-    @GetMapping("/cliente")
+    @GetMapping("/adm/cliente")
     public String getAll(Model model){
         List<Cliente> lista = clienteServicios.get();
         model.addAttribute("cliente", new Cliente());
@@ -23,14 +23,14 @@ public class ClienteController {
         return "clientes/clientes";
     }
 
-    @PostMapping("/cliente")
+    @PostMapping("/adm/cliente")
     public String save(@ModelAttribute("cliente") Cliente cliente){
         System.out.println(cliente);
         clienteServicios.crear(cliente);
-        return "redirect:/cliente";
+        return "redirect:/adm/cliente";
     }
 
-    @GetMapping("/cliente/{codCliente}")
+    @GetMapping("/adm/cliente/{codCliente}")
     public String getEditClientePage(@PathVariable(name = "codCliente") String codCliente, Model model){
         Cliente cliente = new Cliente();
         cliente.setCodCliente(codCliente);
@@ -39,19 +39,19 @@ public class ClienteController {
         return "clientes/edit-cliente";
     }
 
-    @PostMapping("/cliente/{codCliente}")
+    @PostMapping("/adm/cliente/{codCliente}")
     public String editCliente(@ModelAttribute("cliente") Cliente cliente){
         System.out.println(cliente);
         clienteServicios.edit(cliente);
-        return "redirect:/cliente";
+        return "redirect:/adm/cliente";
     }
 
-    @GetMapping("/cliente/eliminar/{codCliente}")
+    @GetMapping("/adm/cliente/eliminar/{codCliente}")
     public String deleteCliente(@PathVariable(name = "codCliente") String codCliente){
         System.out.println(codCliente);
         Cliente c = new Cliente();
         c.setCodCliente(codCliente);
         clienteServicios.eliminar(c);
-        return "redirect:/cliente";
+        return "redirect:/adm/cliente";
     }
 }

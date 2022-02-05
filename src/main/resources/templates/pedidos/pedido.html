@@ -32,7 +32,7 @@
                 <td th:text="${pedido.getSucursal().getDireccion()}"></td>
                 <td th:text="${pedido.getSucursal().getTelefono()}"></td>
                 <td>
-                    <a th:href="@{'/pedido/'+${pedido.getCodPedido()}}" class="btn btn-warning">Ver</a>
+                    <a th:href="@{'/adm/pedido/'+${pedido.getCodPedido()}}" class="btn btn-warning">Ver</a>
                 </td>
             </tr>
             </tbody>
