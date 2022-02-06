@@ -74,13 +74,13 @@ public class PedidoController {
         return "redirect:/adm/pedido";
     }
 
-    @GetMapping("/adm/pedido/eliminar/{codPedido}")
-    public String deleteucursal(@PathVariable(name = "codPedido") Integer codPedido){
+    @GetMapping("/clt/pedido/eliminar/{codPedido}")
+    public String deletePedido(@PathVariable(name = "codPedido") Integer codPedido){
         System.out.println(codPedido);
         Pedido c = new Pedido();
         c.setCodPedido(codPedido);
         pedidoServicios.eliminar(c);
-        return "redirect:/adm/pedido";
+        return "redirect:/clt/pedido";
     }
 
     @GetMapping("/pedido/{codPedido}")

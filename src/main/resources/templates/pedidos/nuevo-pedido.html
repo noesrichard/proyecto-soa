@@ -15,7 +15,7 @@
         <br>
         <span class="fs-5" th:text="'Con fecha: '+${pedido.getFechaPedido()}"></span>
         <br>
-        <a th:href="@{/clt/pedido}" class="btn btn-danger">Regresar</a>
+        <a th:href="@{'/clt/pedido/eliminar/'+${pedido.getCodPedido()}}" class="btn btn-danger">Cancelar</a>
     </div>
     <div class="container">
         <form th:action="@{/clt/pedido/agg-articulo}" th:object="${detalle}" method="POST">
