@@ -15,10 +15,7 @@
         <form th:action="@{/adm/artplanta}" th:object="${artPlanta}" method="POST">
             <div class="row">
                 <div class="col">
-                    <select class="form-control" th:field="*{articulo.codArticulo}"  id="dropArticulosNuevo">
-                        <option value="0">Seleccione un articulo</option>
-                        <option th:each="a : ${articulos}" th:value="${a.codArticulo}" th:text="${a.nomArticulo}"></option>
-                    </select>
+                    <input type="text" id="codigo" class="form-control" placeholder="Nombre" th:field="*{articulo.codArticulo}">
                 </div>
                 <div class="col">
                     <input type="text" id="nombre" class="form-control" placeholder="Nombre" th:field="*{articulo.nomArticulo}">
@@ -67,11 +64,8 @@
                     <input type="text" id="nivelriesgo_solo" class="form-control" th:field="*{nivelRiesgo}" placeholder="Nivel Riesgo" >
                 </div>
                 <div class="col">
-                    <input type="text" id="planta_solo" class="form-control" placeholder="Planta" th:field="*{planta.codPlanta}">
-                </div>
-                <div class="col">
                     <select class="form-control" th:field="*{planta.codPlanta}"  id="dropPlantas">
-                        <option value="0">Seleccione un articulo</option>
+                        <option value="0">Seleccione una planta</option>
                         <option th:each="p : ${plantas}" th:value="${p.codPlanta}" th:text="${p.codPlanta}"></option>
                     </select>
                 </div>
