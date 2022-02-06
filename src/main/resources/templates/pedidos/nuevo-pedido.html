@@ -21,13 +21,16 @@
         <form th:action="@{/clt/pedido/agg-articulo}" th:object="${detalle}" method="POST">
             <div class="row">
                 <div class="col">
-                    <input type="text" id="cedula" class="form-control" placeholder="Codigo Articulo" th:field="*{articulo.codArticulo}">
-                </div>
-                <div class="col">
-                    <input type="text" hidden="true" id="pedido" class="form-control" placeholder="Pedido" th:field="*{pedido.codPedido}">
+                    <select class="form-control" th:field="*{articulo.codArticulo}"  id="dropSucursales">
+                        <option value="0">Seleccione una articulo</option>
+                        <option th:each="s : ${articulos}" th:value="${s.codArticulo}" th:text="${s.nomArticulo}"></option>
+                    </select>
                 </div>
                 <div class="col">
                     <input type="text" id="nombre" class="form-control" placeholder="Cantidad" th:field="*{cantidad}">
+                </div>
+                <div class="col">
+                    <input type="text" hidden="true" id="pedido" class="form-control" placeholder="Pedido" th:field="*{pedido.codPedido}">
                 </div>
             </div>
             <input type="submit" class="btn btn-warning" value="Agregar">
@@ -66,19 +69,17 @@
                 <th>Color</th>
                 <th>Peso</th>
                 <th>Capacidad</th>
-                <th>Planta</th>
                 <th>Existencias</th>
             </tr>
             </thead>
             <tbody class="text-center">
-            <tr th:each="artPlanta : ${artPlantas}">
-                <td th:text="${artPlanta.getArticulo().getCodArticulo()}"></td>
-                <td th:text="${artPlanta.getArticulo().getNomArticulo()}"></td>
-                <td th:text="${artPlanta.getArticulo().getColor()}"></td>
-                <td th:text="${artPlanta.getArticulo().getPeso()}"></td>
-                <td th:text="${artPlanta.getArticulo().getCapacidad()}"></td>
-                <td th:text="${artPlanta.getPlanta().getCodPlanta()}"></td>
-                <td th:text="${artPlanta.getExistencias()}"></td>
+            <tr th:each="a : ${listaArticulos}">
+                <td th:text="${a.articulo.codArticulo}"></td>
+                <td th:text="${a.articulo.nomArticulo}"></td>
+                <td th:text="${a.articulo.color}"></td>
+                <td th:text="${a.articulo.peso}"></td>
+                <td th:text="${a.articulo.capacidad}"></td>
+                <td th:text="${a.existencias}"></td>
             </tr>
             </tbody>
         </table>

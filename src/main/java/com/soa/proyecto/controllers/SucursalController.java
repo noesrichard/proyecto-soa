@@ -1,7 +1,9 @@
 package com.soa.proyecto.controllers;
 
+import com.soa.proyecto.entidades.Cliente;
 import com.soa.proyecto.entidades.Sucursal;
 import com.soa.proyecto.entidades.Sucursal;
+import com.soa.proyecto.servicios.ClienteServicios;
 import com.soa.proyecto.servicios.SucursalServicios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,11 +21,16 @@ public class SucursalController {
     @Autowired
     private SucursalServicios sucursalServicios;
 
+    @Autowired
+    private ClienteServicios clienteServicios;
+
     @GetMapping("/adm/sucursal")
     public String getAll(Model model){
         Sucursal s = new Sucursal();
         List<Sucursal> sucursales = sucursalServicios.get();
+        List<Cliente> clientes = clienteServicios.get();
         model.addAttribute("sucursales", sucursales);
+        model.addAttribute("clientes", clientes);
         model.addAttribute("sucursal", s);
         return "sucursales/sucursal";
     }

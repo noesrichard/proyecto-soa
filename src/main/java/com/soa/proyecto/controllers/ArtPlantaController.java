@@ -1,8 +1,11 @@
 package com.soa.proyecto.controllers;
 
 import com.soa.proyecto.entidades.ArtPlanta;
+import com.soa.proyecto.entidades.Articulo;
+import com.soa.proyecto.entidades.Planta;
 import com.soa.proyecto.servicios.ArtPlantaServicios;
 import com.soa.proyecto.servicios.ArticuloServicios;
+import com.soa.proyecto.servicios.PlantaServicios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,11 +25,18 @@ public class ArtPlantaController {
     @Autowired
     private ArticuloServicios articuloServicios;
 
+    @Autowired
+    private PlantaServicios plantaServicios;
+
     @GetMapping("/adm/artplanta")
     public String getAll(Model model){
         ArtPlanta s = new ArtPlanta();
         List<ArtPlanta> artPlantas = artPlantaServicios.get();
+        List<Planta>  plantas = plantaServicios.get();
+        List<Articulo> articulos = articuloServicios.get();
         model.addAttribute("artPlantas", artPlantas);
+        model.addAttribute("plantas", plantas);
+        model.addAttribute("articulos", articulos);
         model.addAttribute("artPlanta", s);
         return "artplantas/artplantas";
     }

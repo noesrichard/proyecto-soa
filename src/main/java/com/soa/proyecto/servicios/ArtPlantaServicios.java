@@ -3,10 +3,12 @@ package com.soa.proyecto.servicios;
 import com.soa.proyecto.dao.ArtPlantaDAO;
 import com.soa.proyecto.entidades.ArtPlanta;
 import com.soa.proyecto.entidades.Articulo;
+import com.soa.proyecto.entidades.ArticuloExistencias;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -47,5 +49,23 @@ public class ArtPlantaServicios implements Servicio<ArtPlanta>{
 
     public List<ArtPlanta> getByArticulo(Articulo articulo){
         return artPlantaDAO.findByArticulo(articulo);
+    }
+
+    public List<Articulo> getDistinctArticulo(Articulo articulo){
+       return artPlantaDAO.findDistinctByArticulo(articulo);
+    }
+
+    public List<ArticuloExistencias> getDistinctArticuloExistencias(Articulo articulo){
+        List<Object []> objects = artPlantaDAO.findDistinctByArticuloAndExistencias(articulo);
+        List<ArticuloExistencias> articulos = new ArrayList<ArticuloExistencias>();
+        for(Object [] o : objects) {
+            if(o[0] != null && o[1] != null) {
+                ArticuloExistencias a = new ArticuloExistencias();
+                a.setArticulo((Articulo) o[0]);
+                a.setExistencias((Long) o[1]);
+                articulos.add(a);
+            }
+        }
+        return articulos;
     }
 }

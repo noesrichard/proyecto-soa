@@ -26,7 +26,10 @@
                     <input type="text" id="limite" class="form-control" placeholder="Ciudad" th:field="*{ciudad}">
                 </div>
                 <div class="col">
-                    <input type="text" id="cliente" class="form-control" placeholder="Cliente" th:field="*{cliente.codCliente}">
+                    <select class="form-control" th:field="*{cliente.codCliente}"  id="dropOperator">
+                        <option value="0">Seleccione un cliente</option>
+                        <option th:each="c : ${clientes}" th:value="${c.codCliente}" th:text="${c.nomCliente}"></option>
+                    </select>
                 </div>
                 <div class="col">
                     <input type="submit" value="Crear" class="btn btn-primary mb-3">

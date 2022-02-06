@@ -14,7 +14,10 @@
         <form th:action="@{/clt/nuevo-pedido}" th:object="${pedido}" method="get">
             <div class="row">
                 <div class="col">
-                    <input type="text" id="codigo" class="form-control" placeholder="Codigo Sucursal" th:field="*{sucursal.codSucursal}">
+                    <select class="form-control" th:field="*{sucursal.codSucursal}"  id="dropSucursales">
+                        <option value="0">Seleccione una planta</option>
+                        <option th:each="s : ${sucursales}" th:value="${s.codSucursal}" th:text="${s.codSucursal}"></option>
+                    </select>
                 </div>
                 <div class="col">
                     <input type="submit" value="Crear Nuevo Pedido" class="btn btn-primary mb-3">

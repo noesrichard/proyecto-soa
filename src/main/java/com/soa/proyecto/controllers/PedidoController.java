@@ -110,6 +110,7 @@ public class PedidoController {
             pedidos.addAll( pedidoServicios.getBySucursal(sucursal));
         }
         model.addAttribute("pedidos", pedidos);
+        model.addAttribute("sucursales", sucursales);
         model.addAttribute("pedido", p);
         return "pedidos/pedidos-cliente";
     }
@@ -130,8 +131,17 @@ public class PedidoController {
         Detalle d = new Detalle();
         d.setPedido(pedido);
         List<ArtPlanta> lista = artPlantaServicios.get();
-        model.addAttribute("artPlantas", lista);
+        List<ArticuloExistencias> listaArticulos = new ArrayList<ArticuloExistencias>();
+        List<Articulo> articulos = articuloServicios.get();
+        List<Articulo> articulosPlanta = new ArrayList<Articulo>();
+        for(Articulo a : articulos) {
+            articulosPlanta.addAll(artPlantaServicios.getDistinctArticulo(a));
+            listaArticulos.addAll(artPlantaServicios.getDistinctArticuloExistencias(a));
+        }
+        System.out.println(listaArticulos);
+        model.addAttribute("listaArticulos", listaArticulos);
         model.addAttribute("pedido", pedido);
+        model.addAttribute("articulos", articulosPlanta);
         model.addAttribute("detalle",d);
         return "pedidos/nuevo-pedido";
     }
