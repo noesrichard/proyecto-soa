@@ -35,12 +35,19 @@ public class UserDetailsServiceImpl implements UserDetailsService, Servicio<Usua
 
     @Override
     public Usuario crear(Usuario entidad) {
-        return null;
+        if(entidad.getRol() == null) {
+            entidad.setRol("CLIENTE");
+        }
+        return usuarioDAO.save(entidad);
     }
 
     @Override
     public Usuario edit(Usuario entidad) {
-        return null;
+        Usuario u = usuarioDAO.findByUsername(entidad.getUsername());
+        u.setCliente(entidad.getCliente());
+        u.setPassword(entidad.getPassword());
+        u.setRol(entidad.getRol());
+        return u;
     }
 
     @Override

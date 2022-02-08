@@ -33,6 +33,7 @@ public class Usuario implements UserDetails {
     @Column(name = "rol")
     private String rol;
 
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> roles = new ArrayList<>();
