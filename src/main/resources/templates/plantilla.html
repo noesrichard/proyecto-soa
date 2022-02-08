@@ -26,41 +26,48 @@
 </header>
 
 <!-- Nav -->
-<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4" th:fragment="navbar" >
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0" >
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" th:href="@{'/'}">Inicio</a>
-                </li>
-                <li class="nav-item" sec:authorize="hasAuthority('CLIENTE')">
-                    <a class="nav-link active" aria-current="page" th:href="@{'/clt/pedido'}">Pedidos</a>
-                </li>
-                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
-                    <a class="nav-link" th:href="@{'/adm/cliente'}">Clientes</a>
-                </li>
-                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
-                    <a class="nav-link" th:href="@{'/adm/sucursal'}">Sucursales</a>
-                </li>
-                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
-                    <a class="nav-link" th:href="@{'/adm/pedido'}">Pedidos</a>
-                </li>
-                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
-                    <a class="nav-link" th:href="@{'/adm/articulo'}">Articulos</a>
-                </li>
-                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
-                    <a class="nav-link" th:href="@{'/adm/planta'}">Plantas</a>
-                </li>
-                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
-                    <a class="nav-link" th:href="@{'/adm/artplanta'}">Articulos En Planta</a>
-                </li>
-            </ul>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4" th:fragment="navbar" >
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0" >
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{'/'}">Inicio</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasAuthority('CLIENTE')">
+                        <a class="nav-link active" aria-current="page" th:href="@{'/clt/pedido'}">Pedidos</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                        <a class="nav-link" th:href="@{'/adm/cliente'}">Clientes</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                        <a class="nav-link" th:href="@{'/adm/sucursal'}">Sucursales</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                        <a class="nav-link" th:href="@{'/adm/pedido'}">Pedidos</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                        <a class="nav-link" th:href="@{'/adm/articulo'}">Articulos</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                        <a class="nav-link" th:href="@{'/adm/planta'}">Plantas</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                        <a class="nav-link" th:href="@{'/adm/artplanta'}">Articulos En Planta</a>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </nav>
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+          <div class="col-md-5 p-lg-5 mx-auto my-5">
+            <h1 class="display-4 font-weight-normal">La Fabril</h1>
+            <p class="lead font-weight-normal">La Fabril, , es una empresa Ecuatoriana constituida en 1935, que inicia sus operaciones en 1968, bajo la dirección de don Carlos González-Artigas Díaz, quien junto a un gran equipo humano ha construido con esfuerzo una industria innovadora, que se ha consolidado como un socio estratégico para el crecimiento del país, liderando la fabricación de grasas, aceites, oleoquímicos, biocombustibles y productos de aseo e higiene con presencia en mercados nacionales e internacionales.</p>
+            <a class="btn btn-outline-secondary" href="#">¡Bienvenido!</a>
+          </div>
     </div>
-</nav>
 
     <div class="container" th:fragment="footer">
         <div class="b-example-divider"></div>
