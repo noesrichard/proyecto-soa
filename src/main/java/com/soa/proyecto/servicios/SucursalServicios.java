@@ -36,6 +36,7 @@ public class SucursalServicios implements Servicio<Sucursal>{
         s.setDireccion(entidad.getDireccion());
         s.setTelefono(entidad.getTelefono());
         s.setCiudad(entidad.getCiudad());
+        s.setCliente(entidad.getCliente());
         sucursalDAO.save(s);
         return entidad;
     }
