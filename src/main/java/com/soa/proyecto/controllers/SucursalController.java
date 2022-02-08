@@ -47,7 +47,9 @@ public class SucursalController {
         Sucursal sucursal = new Sucursal();
         sucursal.setCodSucursal(codSucursal);
         Sucursal sucursalEncontrado = sucursalServicios.get(sucursal);
+        List<Cliente> clientes = clienteServicios.get();
         model.addAttribute("sucursal", sucursalEncontrado);
+        model.addAttribute("clientes", clientes);
         return "sucursales/edit-sucursal";
     }
 

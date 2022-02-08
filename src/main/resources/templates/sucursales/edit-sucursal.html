@@ -11,21 +11,28 @@
 <nav th:replace="plantilla :: navbar"></nav>
 <div class="container">
     <form th:action="@{/adm/sucursal/${sucursal.getCodSucursal()}}" th:object="${sucursal}" method="POST">
-        <div class="form-group">
+        <div class="form-group" hidden="true">
             <label for="cedula">Cedula</label>
             <input type="text" id="cedula" class="form-control" placeholder="Cedula" th:value="${sucursal.getCodSucursal()}" th:field="*{codSucursal}">
         </div>
         <div class="form-group">
-            <label for="nombre">Cedula</label>
-            <input type="text" id="nombre" class="form-control" placeholder="Cedula" th:value="${sucursal.getDireccion()}" th:field="*{direccion}">
+            <label for="nombre">Direccion</label>
+            <input type="text" id="nombre" class="form-control" placeholder="Direccion" th:value="${sucursal.getDireccion()}" th:field="*{direccion}">
         </div>
         <div class="form-group">
-            <label for="saldo">Cedula</label>
-            <input type="text" id="saldo" class="form-control" placeholder="Cedula" th:value="${sucursal.getTelefono()}" th:field="*{telefono}">
+            <label for="saldo">Telefono</label>
+            <input type="text" id="saldo" class="form-control" placeholder="Telefono" th:value="${sucursal.getTelefono()}" th:field="*{telefono}">
         </div>
         <div class="form-group">
-            <label for="limite">Cedula</label>
-            <input type="text" id="limite" class="form-control" placeholder="Cedula" th:value="${sucursal.getCiudad()}" th:field="*{ciudad}">
+            <label for="limite">Ciudad</label>
+            <input type="text" id="limite" class="form-control" placeholder="Ciudad" th:value="${sucursal.getCiudad()}" th:field="*{ciudad}">
+        </div>
+        <label>Cliente</label>
+        <div class="col">
+            <select class="form-control" th:field="*{cliente.codCliente}"  id="dropOperator">
+                <option th:value="${sucursal.cliente.codCliente}" th:text="${sucursal.cliente.nomCliente}"></option>
+                <option th:each="c : ${clientes}" th:value="${c.codCliente}" th:text="${c.nomCliente}"></option>
+            </select>
         </div>
         <input class="btn btn-warning" type="submit" value="Editar">
     </form>

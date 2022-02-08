@@ -11,7 +11,7 @@
     <nav th:replace="plantilla :: navbar"></nav>
     <div class="container">
         <form th:action="@{/adm/planta/${planta.getCodPlanta()}}" th:object="${planta}" method="POST">
-            <div class="form-group">
+            <div class="form-group" hidden="true">
                 <label for="cedula">Codigo</label>
                 <input type="text" id="cedula" class="form-control" placeholder="Codigo" th:value="${planta.getCodPlanta()}" th:field="*{codPlanta}">
             </div>

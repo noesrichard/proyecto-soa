@@ -11,25 +11,25 @@
     <nav th:replace="plantilla :: navbar"></nav>
     <div class="container">
         <form th:action="@{/adm/cliente/${cliente.getCodCliente()}}" th:object="${cliente}" method="POST">
-            <div class="form-group">
+            <div class="form-group" hidden="true">
                 <label for="cedula">Cedula</label>
                 <input type="text" id="cedula" class="form-control" placeholder="Cedula" th:value="${cliente.getCodCliente()}" th:field="*{codCliente}">
             </div>
             <div class="form-group">
-                <label for="nombre">Cedula</label>
-                <input type="text" id="nombre" class="form-control" placeholder="Cedula" th:value="${cliente.getNomCliente()}" th:field="*{nomCliente}">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" class="form-control" placeholder="Nombre" th:value="${cliente.getNomCliente()}" th:field="*{nomCliente}">
             </div>
             <div class="form-group">
-                <label for="saldo">Cedula</label>
-                <input type="text" id="saldo" class="form-control" placeholder="Cedula" th:value="${cliente.getSaldo()}" th:field="*{saldo}">
+                <label for="saldo">Saldo</label>
+                <input type="text" id="saldo" class="form-control" placeholder="Saldo" th:value="${cliente.getSaldo()}" th:field="*{saldo}">
             </div>
             <div class="form-group">
-                <label for="limite">Cedula</label>
-                <input type="text" id="limite" class="form-control" placeholder="Cedula" th:value="${cliente.getLimiteCredito()}" th:field="*{limiteCredito}">
+                <label for="limite">Limite de Credito</label>
+                <input type="text" id="limite" class="form-control" placeholder="Limite de Credito" th:value="${cliente.getLimiteCredito()}" th:field="*{limiteCredito}">
             </div>
             <div class="form-group">
-                <label for="descuento">Cedula</label>
-                <input type="text" id="descuento" class="form-control" placeholder="Cedula" th:value="${cliente.getPctDescuento()}" th:field="*{pctDescuento}">
+                <label for="descuento">Descuento%</label>
+                <input type="text" id="descuento" class="form-control" placeholder="Descuento%" th:value="${cliente.getPctDescuento()}" th:field="*{pctDescuento}">
             </div>
             <input class="btn btn-warning" type="submit" value="Editar">
         </form>
