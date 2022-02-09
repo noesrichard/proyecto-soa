@@ -60,7 +60,7 @@
                 <td th:text="${sucursal.getCliente().getNomCliente()}"></td>
                 <td>
                     <a th:href="@{'/adm/sucursal/'+${sucursal.getCodSucursal()}}" class="btn btn-warning">Editar</a>
-                    <a th:href="@{'/adm/sucursal/eliminar/'+${sucursal.getCodSucursal()}}" class="btn btn-danger">Eliminar</a>
+                    <a th:href="@{'/adm/sucursal/eliminar/'+${sucursal.getCodSucursal()}}" class="btn btn-danger" onclick="return confirm('¿Seguro desea eliminar el registro?');">Eliminar</a>
                 </td>
             </tr>
             </tbody>

@@ -55,7 +55,7 @@
                 <td th:text="${articulo.getCapacidad()}"></td>
                 <td>
                     <a th:href="@{'/adm/articulo/'+${articulo.getCodArticulo()}}" class="btn btn-warning">Editar</a>
-                    <a th:href="@{'/adm/articulo/eliminar/'+${articulo.getCodArticulo()}}" class="btn btn-danger">Eliminar</a>
+                        <a th:href="@{'/adm/articulo/eliminar/'+${articulo.getCodArticulo()}}" class="btn btn-danger" onclick="return confirm('¿Seguro desea eliminar el registro?');">Eliminar</a>
                 </td>
             </tr>
             </tbody>
