@@ -36,4 +36,10 @@ public class ArtPlanta implements Serializable {
     @Column(name = "nivelriesgo")
     private Integer nivelRiesgo;
 
+    public boolean validar(){
+        return !(articulo == null || existencias == null || nivelRiesgo == null || planta == null ||
+                articulo.getCodArticulo() == null || articulo.getCodArticulo().equals("") ||
+                planta.getCodPlanta() == null || planta.getCodPlanta().equals(""));
+    }
+
 }

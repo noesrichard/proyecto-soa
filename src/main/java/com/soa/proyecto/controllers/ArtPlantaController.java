@@ -44,13 +44,17 @@ public class ArtPlantaController {
     @PostMapping("/adm/artplanta/existente")
     public String saveExistente(@ModelAttribute("artPlanta") ArtPlanta artPlanta){
         System.out.println(artPlanta.getArticulo());
-        artPlantaServicios.crear(artPlanta);
+        if (artPlanta.validar()) {
+            artPlantaServicios.crear(artPlanta);
+        }
         return "redirect:/adm/artplanta";
     }
     @PostMapping("/adm/artplanta")
     public String save(@ModelAttribute("artPlanta") ArtPlanta artPlanta){
-        articuloServicios.crear(artPlanta.getArticulo());
-        artPlantaServicios.crear(artPlanta);
+        if(artPlanta.validar()) {
+            articuloServicios.crear(artPlanta.getArticulo());
+            artPlantaServicios.crear(artPlanta);
+        }
         return "redirect:/adm/artplanta";
     }
 

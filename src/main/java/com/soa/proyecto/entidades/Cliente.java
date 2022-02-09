@@ -32,4 +32,8 @@ public class Cliente implements Serializable {
     @Column(name = "pctdescuento")
     private Integer pctDescuento;
 
+    public boolean validar(){
+        return !(codCliente == null || nomCliente == null);
+    }
+
 }

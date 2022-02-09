@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col">
                     <select class="form-control" th:field="*{sucursal.codSucursal}"  id="dropSucursales">
-                        <option value="0">Seleccione una sucursal</option>
+                        <option value="">Seleccione una sucursal</option>
                         <option th:each="s : ${sucursales}" th:value="${s.codSucursal}" th:text="${s.codSucursal}"></option>
                     </select>
                 </div>

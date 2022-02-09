@@ -122,6 +122,9 @@ public class PedidoController {
     @GetMapping("/clt/nuevo-pedido")
     public String nuevoPedido(@ModelAttribute("pedido") Pedido pedido,
                               Model model){
+        if(!pedido.validar()) {
+            return "redirect:/clt/pedido";
+        }
         List<Articulo> articulos = articuloServicios.get();
         List<Articulo> articulosPlanta = new ArrayList<Articulo>();
         if(pedidoServicios.get(pedido) == null) {

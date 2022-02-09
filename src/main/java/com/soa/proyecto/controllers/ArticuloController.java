@@ -29,7 +29,9 @@ public class ArticuloController {
     @PostMapping("/adm/articulo")
     public String save(@ModelAttribute("articulo") Articulo articulo){
         System.out.println(articulo);
-        articuloServicios.crear(articulo);
+        if(articulo.validar()){
+            articuloServicios.crear(articulo);
+        }
         return "redirect:/adm/articulo";
     }
 

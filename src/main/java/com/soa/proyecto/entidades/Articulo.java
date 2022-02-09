@@ -32,4 +32,8 @@ public class Articulo implements Serializable {
     @Column(name = "capacidad")
     private Double capacidad;
 
+    public boolean validar(){
+        return !(codArticulo == null || nomArticulo == null || color == null || peso == null || capacidad == null);
+    }
+
 }

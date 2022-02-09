@@ -29,7 +29,9 @@ public class PlantaController {
     @PostMapping("/adm/planta")
     public String save(@ModelAttribute("planta") Planta planta){
         System.out.println(planta);
-        plantaServicios.crear(planta);
+        if(planta.validar()) {
+            plantaServicios.crear(planta);
+        }
         return "redirect:/adm/planta";
     }
 

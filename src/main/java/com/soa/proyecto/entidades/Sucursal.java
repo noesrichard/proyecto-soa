@@ -29,4 +29,9 @@ public class Sucursal implements Serializable {
     @ManyToOne
     @JoinColumn(name = "cliente")
     private Cliente cliente;
+
+    public boolean validar(){
+        return !(codSucursal == null || direccion == null || telefono == null || ciudad == null || cliente == null ||
+                cliente.getCodCliente().equals("") || cliente.getCodCliente() == null);
+    }
 }

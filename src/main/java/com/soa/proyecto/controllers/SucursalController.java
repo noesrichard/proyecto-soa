@@ -37,7 +37,9 @@ public class SucursalController {
 
     @PostMapping("/adm/sucursal")
     public String save(@ModelAttribute("sucursal") Sucursal sucursal){
-        sucursalServicios.crear(sucursal);
+        if(sucursal.validar()) {
+            sucursalServicios.crear(sucursal);
+        }
         return "redirect:/adm/sucursal";
     }
 

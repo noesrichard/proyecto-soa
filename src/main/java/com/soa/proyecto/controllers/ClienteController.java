@@ -26,7 +26,9 @@ public class ClienteController {
     @PostMapping("/adm/cliente")
     public String save(@ModelAttribute("cliente") Cliente cliente){
         System.out.println(cliente);
-        clienteServicios.crear(cliente);
+        if(cliente.validar()) {
+            clienteServicios.crear(cliente);
+        }
         return "redirect:/adm/cliente";
     }
 

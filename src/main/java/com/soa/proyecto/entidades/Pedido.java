@@ -25,6 +25,9 @@ public class Pedido implements Serializable {
     @JoinColumn(name = "sucursal")
     private Sucursal sucursal;
 
+    public boolean validar(){
+        return !(sucursal == null || sucursal.getCodSucursal().equals("") || sucursal.getCodSucursal() == null);
+    }
 
 
 }

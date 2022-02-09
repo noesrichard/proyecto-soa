@@ -28,4 +28,8 @@ public class Planta implements Serializable {
 
     @Column(name = "telefono", length = 10)
     private String telefono;
+
+    public boolean validar(){
+        return !(codPlanta == null || nomPlanta == null || direccion == null || telefono == null);
+    }
 }
