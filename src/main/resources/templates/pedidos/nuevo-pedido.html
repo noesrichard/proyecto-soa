@@ -16,7 +16,9 @@
         <span class="fs-5" th:text="'Con fecha: '+${pedido.getFechaPedido()}"></span>
         <br>
         <a th:href="@{'/clt/pedido/eliminar/'+${pedido.getCodPedido()}}" class="btn btn-danger">Cancelar</a>
+        <a th:href="@{'/clt/pedido/'+${pedido.getCodPedido()}+'/guardar'}" class="btn btn-primary">Guardar</a>
     </div>
+    <!--
     <div class="container">
         <form th:action="@{/clt/pedido/agg-articulo}" th:object="${detalle}" method="POST">
             <div class="row">
@@ -36,6 +38,7 @@
             <input type="submit" class="btn btn-warning" value="Agregar">
         </form>
     </div>
+    -->
     <div class="container">
         <table class="table table-bordered" id="tabla-pedidos">
             <thead class="table-dark text-center">
@@ -70,17 +73,28 @@
                 <th>Peso</th>
                 <th>Capacidad</th>
                 <th>Existencias</th>
+                <th>Cantidad</th>
+                <th>Acciones</th>
             </tr>
             </thead>
             <tbody class="text-center">
-            <tr th:each="a : ${listaArticulos}">
-                <td th:text="${a.articulo.codArticulo}"></td>
-                <td th:text="${a.articulo.nomArticulo}"></td>
-                <td th:text="${a.articulo.color}"></td>
-                <td th:text="${a.articulo.peso}"></td>
-                <td th:text="${a.articulo.capacidad}"></td>
-                <td th:text="${a.existencias}"></td>
-            </tr>
+                <tr th:each="a : ${listaArticulos}">
+                    <form th:action="@{'/clt/pedido/'+${pedido.codPedido}+'/agg-articulo/'+${a.articulo.codArticulo}}" th:object="${detalle}" method="post">
+                        <td th:text="${a.articulo.codArticulo}"></td>
+                        <td th:text="${a.articulo.nomArticulo}"></td>
+                        <td th:text="${a.articulo.color}"></td>
+                        <td th:text="${a.articulo.peso}"></td>
+                        <td th:text="${a.articulo.capacidad}"></td>
+                        <td th:text="${a.existencias}"></td>
+                        <td>
+                            <input type="text" placeholder="Cantidad" th:field="*{cantidad}">
+                        </td>
+                        <td>
+                            <input type="submit" class="btn btn-warning" value="Agregar">
+                            <a></a>
+                        </td>
+                    </form>
+                </tr>
             </tbody>
         </table>
     </div>
