@@ -39,7 +39,7 @@ public class HomeController {
     public String signin(Model model){
         Usuario u = new Usuario();
         model.addAttribute("usuario", u);
-        return "/signin";
+        return "registrarse";
     }
 
     @PostMapping("/nuevo-usuario")
