@@ -28,7 +28,7 @@
                 <div class="col">
                     <select class="form-control" th:field="*{cliente.codCliente}"  id="dropOperator">
                         <option value="0">Seleccione un cliente</option>
-                        <option th:each="c : ${clientes}" th:value="${c.codCliente}" th:text="${c.nomCliente}"></option>
+                        <option th:each="c : ${clientes}" th:value="${c.codCliente}" th:text="${c.codCliente}+' - '+${c.nomCliente}"></option>
                     </select>
                 </div>
                 <div class="col">

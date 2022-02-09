@@ -38,7 +38,7 @@
                 <div class="col">
                     <select class="form-control" th:field="*{planta.codPlanta}"  id="dropPlantasNuevo">
                         <option value="0">Seleccione una planta</option>
-                        <option th:each="p : ${plantas}" th:value="${p.codPlanta}" th:text="${p.codPlanta}"></option>
+                        <option th:each="p : ${plantas}" th:value="${p.codPlanta}" th:text="${p.codPlanta+' - '+p.nomPlanta}"></option>
                     </select>
                 </div>
                 <div class="col">
@@ -54,7 +54,7 @@
                 <div class="col">
                     <select class="form-control" th:field="*{articulo.codArticulo}"  id="dropOperator">
                         <option value="0">Seleccione un articulo</option>
-                        <option th:each="a : ${articulos}" th:value="${a.codArticulo}" th:text="${a.nomArticulo}"></option>
+                        <option th:each="a : ${articulos}" th:value="${a.codArticulo}" th:text="${a.codArticulo}+' - '+${a.nomArticulo}"></option>
                     </select>
                 </div>
                 <div class="col">
@@ -66,7 +66,7 @@
                 <div class="col">
                     <select class="form-control" th:field="*{planta.codPlanta}"  id="dropPlantas">
                         <option value="0">Seleccione una planta</option>
-                        <option th:each="p : ${plantas}" th:value="${p.codPlanta}" th:text="${p.codPlanta}"></option>
+                        <option th:each="p : ${plantas}" th:value="${p.codPlanta}" th:text="${p.codPlanta+' - '+p.nomPlanta}"></option>
                     </select>
                 </div>
                 <div class="col">
